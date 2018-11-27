@@ -66,10 +66,15 @@ class App {
 
     setupRoutes(): void {
         this.express
+            .get('/', this.home)
             .post('/movies', postMoviesRules, this.postMovies)
             .get('/movies', getMoviesRules, this.getMovies)
             .post('/comments', postCommentsRules, this.postComments)
             .get('/comments', getCommentsRules, this.getComments);
+    }
+
+    home(req: express.Request, res: express.Response) {
+        res.send({ msg: 'Hi World' });
     }
 
     postMovies(req: express.Request, res: express.Response) {
