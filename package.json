@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "nodemon --watch src/**/*.ts --exec ts-node src/app.ts",
     "prod": "npm run test && tsc && nodemon dist/app.js",
-    "test": "mocha --exit --require ts-node/register test/**/*.ts",
+    "test": "node node_modules/mocha/bin/mocha --exit --require ts-node/register test/**/*.ts",
     "prestart": "npm run test && tsc",
     "start": "node dist/app.js"
   },
