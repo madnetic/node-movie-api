@@ -53,10 +53,11 @@ class App {
                 console.log(`DB connection successfully initialized at ${process.env.DB_HOST}:${process.env.DB_PORT}`);
             });
 
-        const host = process.env.DB_HOST || 'localhost'
-            , port = process.env.DB_PORT || 27017;
+        const host      = process.env.DB_HOST || 'localhost'
+            , port      = process.env.DB_PORT || 27017
+            , dbName    = process.env.DB_NAME || 'omdb-api';
 
-        mongoose.connect(`mongodb://${host}:${port}/omdb-api`, {
+        mongoose.connect(`mongodb://${host}:${port}/${dbName}`, {
             useNewUrlParser     : true,
             reconnectTries      : Number.MAX_VALUE,
             reconnectInterval   : 1000
