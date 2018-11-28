@@ -67,7 +67,7 @@ Parameters marked with * are required.
         </tr>
         <tr>
             <th style="vertical-align:top;text-align:right;">Sample error response</th>
-            <td>
+            <td colspan="2">
                 <pre>
 {
     "errors": [
@@ -200,7 +200,7 @@ Parameters marked with * are required.
         </tr>
         <tr>
             <th style="vertical-align:top;text-align:right;">Sample error response</th>
-            <td>
+            <td colspan="2">
                 <pre>
 {
     "errors": [
@@ -248,7 +248,7 @@ Parameters marked with * are required.
         </tr>
         <tr>
             <th style="vertical-align:top;text-align:right;">Sample error response</th>
-            <td>
+            <td colspan="2">
                 <pre>
 {
     "errors": [
@@ -308,7 +308,7 @@ Parameters marked with * are required.
         </tr>
         <tr>
             <th style="vertical-align:top;text-align:right;">Sample error response</th>
-            <td>
+            <td colspan="2">
                 <pre>
 {
     "errors": [
