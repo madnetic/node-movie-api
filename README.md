@@ -25,13 +25,13 @@ Parameters marked with * are required.
     <tbody>
         <tr>
             <th style="text-align:right;width:100px;">Body Params</th>
-            <td>string **title***</td>
+            <td>string <strong>title</strong>*</td>
             <td>Title of movie to search for</td>
         </tr>
         <tr>
             <th style="vertical-align:top;text-align:right;margin-right:1rem;">Sample success response</span></th>
             <td colspan="2">
-                <pre style="max-width:700px;overflow:hidden;text-overflow:ellipsis;">
+                <pre style="max-width:730px !important;overflow:hidden !important;text-overflow:ellipsis !important;">
 {
     "_id": "5bfdc240e8681b3614d6f5ca",
     "genres": ["Action", "Thriller"],
