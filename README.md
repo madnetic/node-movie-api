@@ -2,7 +2,7 @@
 Node.js + MongoDB OMDB based movie API
 
 ## Installation steps
-1. ```npm install```
+1. ```npm install && tsc```
 2. .env configuration based on .env.example. OMDB_APIKEY has to be set. MONGODB_URI is optional, in case it isn't set defaults are used.
 
 ## Running dev server
