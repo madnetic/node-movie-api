@@ -21,17 +21,17 @@ https://node-movie-api-1.herokuapp.com
 Parameters marked with * are required.
 
 ### POST /movies
-<table style="width:100%;">
+<table>
     <tbody>
         <tr>
-            <th style="text-align:right;width:100px;">Body Params</th>
+            <th>Body Params</th>
             <td>string <strong>title</strong>*</td>
             <td>Title of movie to search for</td>
         </tr>
         <tr>
-            <th style="vertical-align:top;text-align:right;margin-right:1rem;">Sample success response</span></th>
+            <th>Sample success response</span></th>
             <td colspan="2">
-                <pre class="col-6" style="max-width:730px !important;overflow:hidden !important;text-overflow:ellipsis !important;">
+                <pre>
 {
     "_id": "5bfdc240e8681b3614d6f5ca",
     "genres": ["Action", "Thriller"],
@@ -78,20 +78,19 @@ Parameters marked with * are required.
             </td>
         </tr>
         <tr>
-            <th style="vertical-align:top;text-align:right;">Sample error response</th>
+            <th>Sample error response</th>
             <td colspan="2">
                 <pre>
 {
     "errors": [
         "Movie not found"
     ]
-}                     
-                </pre>
+}</pre>
             </td>
         </tr>
         <tr>
-            <th rowspan="3" style="vertical-align:top;text-align:right;">Error codes</th>
-            <td width="300px">404 Not Found</td>
+            <th rowspan="3">Error codes</th>
+            <td>404 Not Found</td>
             <td>Movie does not exist in OMDB</td>
         </tr>
         <tr>
@@ -106,28 +105,28 @@ Parameters marked with * are required.
 </table>
 
 ### GET /movies
-<table style="width:100%;">
+<table>
     <tbody>
         <tr>
-            <th style="text-align:right;width:100px;" rowspan="16">Query/Body Params</th>
+            <th rowspan="16">Query/Body Params</th>
             <td>string <strong>page</strong></td>
             <td>Page number</td>
         </tr>
         <tr>
             <td>string <strong>pageSize</strong></td>
-            <td>Number of results to return</td>
+            <td>Number of results to return. Default: 5</td>
         </tr>
         <tr>
             <td>string <strong>sortBy</strong></td>
-            <td>Possible values: 'title', 'year', 'rated', 'released', 'metascore', 'imdbRating', 'imdbVotes'</td>
+            <td>Possible values: <code>title</code>, <code>year</code>, <code>rated</code>, <code>released</code>, <code>metascore</code>,<br> <code>imdbRating</code>, <code>imdbVotes</code></td>
         </tr>
         <tr>
             <td>string <strong>sortDirection</strong></td>
-            <td>Possible values: 'asc', 'desc'</td>
+            <td>Possible values: <code>asc</code>, <code>desc</code></td>
         </tr>
         <tr>
             <td>array <strong>genres</strong></td>
-            <td>Possible values: 'Drama', 'Romance', 'Action', 'Crime', 'Thriller', 'Adventure', 'War', 'Documentary', 'Family', 'Animation', 'Fantasy', 'Sci-Fi'</td>
+            <td>Possible values: <code>Drama</code>, <code>Romance</code>, <code>Action</code>, <code>Crime</code>,<code>Thriller</code>, <code>Adventure</code>,<br>  <code>War</code>, <code>Documentary</code>, <code>Family</code>, <code>Animation</code>, <code>Fantasy</code>, <code>Sci-Fi</code></td>
         </tr>
         <tr>
             <td>array <strong>directors</strong></td>
@@ -155,7 +154,7 @@ Parameters marked with * are required.
         </tr>
         <tr>
             <td>array <strong>year</strong></td>
-            <td>Array of conditions in format ```operator:value```. Possible operators: ```gt```, ```gte```, ```lt```, ```lte```, ```eq```, ```ne```.</td>
+            <td>Array of conditions in format <code>operator:value</code>.<br> Possible operators: <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code>, <code>eq</code>, <code>ne</code>.</td>
         </tr>
         <tr>
             <td>array <strong>metascore</strong></td>
@@ -174,9 +173,9 @@ Parameters marked with * are required.
             <td>Same as above</td>
         </tr>
         <tr>
-            <th style="vertical-align:top;text-align:right;margin-right:1rem;">Sample success response</span></th>
+            <th>Sample success response</span></th>
             <td colspan="2">
-                <pre style="max-width:700px;overflow:hidden;text-overflow:ellipsis;">
+                <pre>
 [{
     "_id": "5bfdc240e8681b3614d6f5ca",
     "genres": ["Action", "Thriller"],
@@ -223,20 +222,19 @@ Parameters marked with * are required.
             </td>
         </tr>
         <tr>
-            <th style="vertical-align:top;text-align:right;">Sample error response</th>
+            <th>Sample error response</th>
             <td colspan="2">
                 <pre>
 {
     "errors": [
         "Unknown genre"
     ]
-}                    
-                </pre>
+}</pre>
             </td>
         </tr>
         <tr>
-            <th rowspan="2" style="vertical-align:top;text-align:right;">Error codes</th>
-            <td style="width:300px;">422 Unprocessable Entity</td>
+            <th rowspan="2">Error codes</th>
+            <td>422 Unprocessable Entity</td>
             <td>Data did not pass validation</td>
         </tr>
         <tr>
@@ -247,10 +245,10 @@ Parameters marked with * are required.
 </table>
 
 ### POST /comments
-<table style="width:100%;">
+<table>
     <tbody>
         <tr>
-            <th style="text-align:right;width:100px;" rowspan="2">Body Params</th>
+            <th rowspan="2">Body Params</th>
             <td>string <strong>movieId</strong>*</td>
             <td>ID of associated movie</td>
         </tr>
@@ -259,9 +257,9 @@ Parameters marked with * are required.
             <td>Comment body</td>
         </tr>
         <tr>
-            <th style="vertical-align:top;text-align:right;margin-right:1rem;">Sample success response</span></th>
+            <th>Sample success response</span></th>
             <td colspan="2">
-                <pre style="max-width:700px;overflow:hidden;text-overflow:ellipsis;">
+                <pre>
 {
     "_id": "5bfed8a485d7bb1d54578c00",
     "movieId": "5bfec762352eba323c9dd9cc",
@@ -271,7 +269,7 @@ Parameters marked with * are required.
             </td>
         </tr>
         <tr>
-            <th style="vertical-align:top;text-align:right;">Sample error response</th>
+            <th>Sample error response</th>
             <td colspan="2">
                 <pre>
 {
@@ -279,13 +277,12 @@ Parameters marked with * are required.
         "Content must be provided",
         "Content must be between 2 and 999 characters long"
     ]
-}                   
-                </pre>
+}</pre>
             </td>
         </tr>
         <tr>
-            <th rowspan="2" style="vertical-align:top;text-align:right;">Error codes</th>
-            <td style="width:300px">422 Unprocessable Entity</td>
+            <th rowspan="2">Error codes</th>
+            <td>422 Unprocessable Entity</td>
             <td>Data did not pass validation</td>
         </tr>
         <tr>
@@ -296,10 +293,10 @@ Parameters marked with * are required.
 </table>
 
 ### GET /comments
-<table style="width:100%;">
+<table>
     <tbody>
         <tr>
-            <th style="text-align:right;width:100px;" rowspan="3">Query/Body Params</th>
+            <th rowspan="3">Query/Body Params</th>
             <td>string <strong>movieId</strong></td>
             <td>ID of associated movie</td>
         </tr>
@@ -309,12 +306,12 @@ Parameters marked with * are required.
         </tr>
         <tr>
             <td>string <strong>pageSize</strong></td>
-            <td>Number of results to return</td>
+            <td>Number of results to return. Default: 5</td>
         </tr>
         <tr>
-            <th style="vertical-align:top;text-align:right;margin-right:1rem;">Sample success response</span></th>
+            <th>Sample success response</span></th>
             <td colspan="2">
-                <pre style="max-width:700px;overflow:hidden;text-overflow:ellipsis;">
+                <pre>
 [
     {
         "_id": "5bfedb9efbd1c361883e9cde",
@@ -331,20 +328,19 @@ Parameters marked with * are required.
             </td>
         </tr>
         <tr>
-            <th style="vertical-align:top;text-align:right;">Sample error response</th>
+            <th>Sample error response</th>
             <td colspan="2">
                 <pre>
 {
     "errors": [
         "Page size must be between 1 and 100"
     ]
-}                    
-                </pre>
+}</pre>
             </td>
         </tr>
         <tr>
-            <th rowspan="2" style="vertical-align:top;text-align:right;">Error codes</th>
-            <td style="width:300px">422 Unprocessable Entity</td>
+            <th rowspan="2">Error codes</th>
+            <td>422 Unprocessable Entity</td>
             <td>Data did not pass validation</td>
         </tr>
         <tr>
