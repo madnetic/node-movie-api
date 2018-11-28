@@ -2,10 +2,10 @@ import { Schema, model } from 'mongoose';
 import { Decimal128 } from 'bson';
 
 const movieSchema = new Schema({
-    title           : { type: String, required: true },
-    year            : Number,
-    rated           : String,
-    released        : Date,
+    title           : { type: String, required: true, index: true },
+    year            : { type: Number, index: true },
+    rated           : { type: String, index: true },
+    released        : { type: Date, index: true },
     runtime         : String,
     genres          : [String],
     directors       : [String],
@@ -17,9 +17,9 @@ const movieSchema = new Schema({
     awards          : String,
     poster          : String,
     ratings         : [{ source: String, score: String }],
-    metascore       : Number,
-    imdbRating      : Decimal128,
-    imdbVotes       : Number,
+    metascore       : { type: Number, index: true },
+    imdbRating      : { type: Decimal128, index: true },
+    imdbVotes       : { type: Number, index: true },
     imdbID          : String,
     type            : String,
     dvd             : Date,
