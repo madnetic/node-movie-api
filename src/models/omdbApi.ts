@@ -23,8 +23,9 @@ export interface OMDBResponse {
     BoxOffice       : string;
     Production      : string;
     Website         : string;
-    Response        : string;
     totalSeasons?   : string;
+    Response        : 'True'|'False';
+    Error?          : string;
 }
 
 export interface OMDBRating {

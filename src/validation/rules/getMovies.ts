@@ -6,11 +6,27 @@ const getFilterableNumberFieldErrorMessage =
     , filterableNumberFieldRegex = /^(lt|lte|gt|gte|eq|ne):[0-9]+(\.[0-9]+)?$/;
 
 const getMoviesRules = checkSchema({
+    page: {
+        in: ['body', 'query'],
+        optional: true,
+        isInt: {
+            options: { min: 1 },
+            errorMessage: 'Page number must be higher or equal 1'
+        }
+    },
+    pageSize: {
+        in: ['body', 'query'],
+        optional: true,
+        isInt: {
+            options: { min: 1, max: 100 },
+            errorMessage: 'Page size must be between 1 and 100'
+        }
+    },
     sortBy: {
         in: ['body', 'query'],
         optional: true,
         isIn: {
-            options: [['title', 'year', 'rated', 'released', 'metascore', 'imdbRating', 'imdbVotes', 'boxOffice']],
+            options: [['title', 'year', 'rated', 'released', 'metascore', 'imdbRating', 'imdbVotes']],
             errorMessage: 'Unsupported sort field'
         }
     },

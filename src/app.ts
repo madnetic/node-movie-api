@@ -34,6 +34,9 @@ class App {
     config(): void {
         dotenv.config();
         this.express.use(bodyParser.json());
+        this.express.use((err, req, res, next) => {
+            next();
+        });
 
         if (!process.env.OMDB_APIKEY) {
             console.error('OMDB APIKEY is not set');
@@ -85,6 +88,13 @@ class App {
             if (!movie) {
                 axios.get(`http://www.omdbapi.com/?apikey=${process.env.OMDB_APIKEY}&t=${req.body.title}`)
                     .then((r: AxiosResponse<OMDBResponse>) => {
+                        if (r.data.Error) {
+                            if (r.data.Error === 'Movie not found!') {
+                                res.status(404).send({ errors: ['Movie not found'] });
+                            }
+                            throw r.data.Error;
+                        }
+
                         const { Title, Year, Rated, Released, Runtime, Genre, Director, Writer, Actors
                               , Plot, Language, Country, Awards, Poster, Ratings, Metascore, imdbRating
                               , imdbVotes, imdbID, Type, DVD, BoxOffice, Production, Website, totalSeasons } = r.data;
@@ -142,8 +152,10 @@ class App {
             , filterableNumberFields    = ['year', 'metascore', 'imdbRating', 'imdbVotes', 'totalSeasons']
             , filterableFields          = ['imdbID']
             , conditions                = {}
-            , opts                      = {}
-            , params                    = objectAssign(req.body, req.query);
+            , params                    = objectAssign(req.body, req.query)
+            , page                      = parseInt(params.page, 10) || 1
+            , pageSize                  = parseInt(params.pageSize) || 5
+            , opts                      = { limit: pageSize, skip: ((page - 1) * pageSize) };
 
         Object.keys(params).forEach(k => {
             if (Array.isArray(params[k]) && params[k].length) {
@@ -173,7 +185,12 @@ class App {
     }
 
     postComments(req: express.Request, res: express.Response) {
-        const errors = validationResult(req).formatWith(errorFormatter);
+        let errors;
+        try {
+            errors = validationResult(req).formatWith(errorFormatter);
+        } catch (e) {
+            res.status(666).send({'here': 1});
+        }
         if (!errors.isEmpty()) {
             return res.status(422).send({ errors: errors.array() });
         }
@@ -196,8 +213,13 @@ class App {
             return res.status(422).send({ errors: errors.array() });
         }
 
-        const conditions = req.body.movieId ? { movieId: req.body.movieId } : {};
-        Comment.find(conditions, (err, comments) => {
+        const params    = objectAssign(req.query, req.body)
+            , page      = parseInt(params.page, 10) || 1
+            , pageSize  = parseInt(params.pageSize, 10) || 5
+            , opts      = { limit: pageSize, skip: ((page - 1) * pageSize) };
+
+        const conditions = params.movieId ? { movieId: params.movieId } : {};
+        Comment.find(conditions, null, opts, (err, comments) => {
             if (err) res.status(500).send({ errors: [err] });
             return res.send(comments);
         });
