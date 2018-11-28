@@ -47,7 +47,7 @@ Parameters marked with * are required.
     "runtime": "132 min",
     "plot": "John McClane, officer of the NYPD, tries to save his wife Holly Gennaro...",
     "awards": "Nominated for 4 Oscars. Another 7 wins & 2 nominations.",
-    "poster": "https://m.media-amazon.com/images/M/MV5BZjRlNDUxZjAtOGQ4OC00OTNlLTgxNmQtYTBmMDgwZmNmNjkxXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
+    "poster": "https://m.media-amazon.com/images/M/MV5BZjRlNDUxZjAtOGQ4OC00OTNlLTgxNmQtYTBmMDgwZ...",
     "ratings": [
         {
             "_id": "5bfdc240e8681b3614d6f5cd", 
@@ -233,7 +233,7 @@ Parameters marked with * are required.
     "runtime": "132 min",
     "plot": "John McClane, officer of the NYPD, tries to save his wife Holly Gennaro...",
     "awards": "Nominated for 4 Oscars. Another 7 wins & 2 nominations.",
-    "poster": "https://m.media-amazon.com/images/M/MV5BZjRlNDUxZjAtOGQ4OC00OTNlLTgxNmQtYTBmMDgwZmNmNjkxXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
+    "poster": "https://m.media-amazon.com/images/M/MV5BZjRlNDUxZjAtOGQ4OC00OTNlLTgxNmQtYTBmMDgwZm...",
     "ratings": [
         {
             "_id": "5bfdc240e8681b3614d6f5cd", 
