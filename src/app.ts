@@ -90,7 +90,7 @@ class App {
                     .then((r: AxiosResponse<OMDBResponse>) => {
                         if (r.data.Error) {
                             if (r.data.Error === 'Movie not found!') {
-                                res.status(404).send({ errors: ['Movie not found'] });
+                                return res.status(404).send({ errors: ['Movie not found'] });
                             }
                             throw r.data.Error;
                         }
@@ -179,18 +179,13 @@ class App {
         }
 
         Movie.find(conditions, null, opts, (err, movies) => {
-            if (err) res.status(500).send({ errors: [err] });
+            if (err) return res.status(500).send({ errors: [err] });
             return res.send(movies);
         });
     }
 
     postComments(req: express.Request, res: express.Response) {
-        let errors;
-        try {
-            errors = validationResult(req).formatWith(errorFormatter);
-        } catch (e) {
-            res.status(666).send({'here': 1});
-        }
+        const errors = validationResult(req).formatWith(errorFormatter);
         if (!errors.isEmpty()) {
             return res.status(422).send({ errors: errors.array() });
         }
@@ -220,7 +215,7 @@ class App {
 
         const conditions = params.movieId ? { movieId: params.movieId } : {};
         Comment.find(conditions, null, opts, (err, comments) => {
-            if (err) res.status(500).send({ errors: [err] });
+            if (err) return res.status(500).send({ errors: [err] });
             return res.send(comments);
         });
     }

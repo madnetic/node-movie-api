@@ -1,5 +1,5 @@
 import { checkSchema } from 'express-validator/check';
-import movieExistsValidator from '../validators/movieExistsValidator';
+import movieIdValidator from '../validators/movieIdValidator';
 
 const postCommentsRules = checkSchema({
     movieId: {
@@ -7,11 +7,7 @@ const postCommentsRules = checkSchema({
         exists: {
             errorMessage: 'Movie ID must be provided'
         },
-        isLength: {
-            options: { min: 24, max: 24 },
-            errorMessage: 'Movie ID must be exactly 24 characters long'
-        },
-        custom: movieExistsValidator
+        custom: movieIdValidator
     },
     content: {
         in: ['body'],
