@@ -154,7 +154,7 @@ class App {
             , conditions                = {}
             , params                    = objectAssign(req.body, req.query)
             , page                      = parseInt(params.page, 10) || 1
-            , pageSize                  = parseInt(params.pageSize) || 5
+            , pageSize                  = parseInt(params.pageSize, 10) || 5
             , opts                      = { limit: pageSize, skip: ((page - 1) * pageSize) };
 
         Object.keys(params).forEach(k => {
